@@ -1,4 +1,4 @@
-{% set version = '0.4.3' %}
+{% set version = '0.5.0' %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -8,11 +8,10 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: munsell_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/munsell_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/munsell/munsell_{{ version }}.tar.gz
-  sha256: 397c3c90af966f48eebe8f5d9e40c41b17541f0baaa102eec3ea4faae5a2bd49
+  sha256: d0f3a9fb30e2b5d411fa61db56d4be5733a2621c0edf017d090bdfa5e377e199
 
 build:
   merge_build_host: True  # [win]
@@ -27,6 +26,7 @@ build:
 # Suggests: ggplot2, testthat
 requirements:
   build:
+    - {{posix}}zip               # [win]
 
   host:
     - r-base
@@ -49,7 +49,7 @@ test:
     # Put any additional test requirements here.
 
 about:
-  home: https://CRAN.R-project.org/package=munsell
+  home: https://cran.r-project.org/package=munsell, https://github.com/cwickham/munsell/
   license: MIT + file LICENSE
   summary: Provides easy access to, and manipulation of, the Munsell  colours. Provides a mapping
     between Munsell's  original notation (e.g. "5R 5/10") and hexadecimal strings suitable  for
@@ -68,18 +68,19 @@ extra:
 # Package: munsell
 # Type: Package
 # Title: Utilities for Using Munsell Colours
-# Version: 0.4.3
+# Version: 0.5.0
 # Author: Charlotte Wickham <cwickham@gmail.com>
 # Maintainer: Charlotte Wickham <cwickham@gmail.com>
 # Description: Provides easy access to, and manipulation of, the Munsell  colours. Provides a mapping between Munsell's  original notation (e.g. "5R 5/10") and hexadecimal strings suitable  for use directly in R graphics. Also provides utilities  to explore slices through the Munsell colour tree, to transform  Munsell colours and display colour palettes.
 # Suggests: ggplot2, testthat
 # Imports: colorspace, methods
 # License: MIT + file LICENSE
-# RoxygenNote: 5.0.1
+# URL: https://cran.r-project.org/package=munsell, https://github.com/cwickham/munsell/
+# RoxygenNote: 6.0.1
 # NeedsCompilation: no
-# Packaged: 2016-02-12 19:58:18 UTC; wickhamc
+# Packaged: 2018-06-11 23:15:15 UTC; wickhamc
 # Repository: CRAN
-# Date/Publication: 2016-02-13 00:46:00
+# Date/Publication: 2018-06-12 04:29:06 UTC
 
 # See
 # http://docs.continuum.io/conda/build.html for
